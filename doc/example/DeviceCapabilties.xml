@@ -1,0 +1,17 @@
+<!--URL: http://<ip>:2020/onvif/device_service-->
+<!--Sample Request to get device capabilties without authentication-->
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:wsa="http://www.w3.org/2005/08/addressing"
+  xmlns:tet="http://www.onvif.org/ver10/device/wsdl">
+  <SOAP-ENV:Header>
+    <wsa:Action>
+      http://www.onvif.org/ver10/device/wsdl/GetCapabilities
+    </wsa:Action>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <tet:GetCapabilities>
+      <tet:Category>All</tds:Category>
+    </tet:GetCapabilities>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
