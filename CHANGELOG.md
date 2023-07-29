@@ -16,4 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0-alpha] - 2023-07-29
+## [1.0.0-alpha] - 2023-07-30
+
+### Added
+- go mod 
+- basic folder structure
+- onvif core specification
+- sample onvif requests with digest auth
+- sample onvif request without digest auth
+- makefile for future functionality
