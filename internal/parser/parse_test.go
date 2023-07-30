@@ -2,7 +2,6 @@ package parser
 
 import (
 	"bytes"
-	"fmt"
 	"testing"
 )
 
@@ -20,10 +19,18 @@ func TestWriteXML(t *testing.T) {
 		t.Error(data)
 	}
 
-	fmt.Printf("%s", b)
-
 	if !bytes.Contains(b, []byte("</hi>")) {
 		t.Error("xml was unable to pass struct")
+	}
+}
+
+func BenchmarkWriteXML(b *testing.B) {
+	data := test{
+		HI: "Hello",
+	}
+
+	for i := 0; i < b.N; i++ {
+		WriteXml(data)
 	}
 }
 
@@ -36,5 +43,13 @@ func TestParseXML(t *testing.T) {
 
 	if data.HI != "Hello" {
 		t.Error("failed to parse XML to struct")
+	}
+}
+
+func BenchmarkParseXML(b *testing.B) {
+	xml := "<test><hi>Hello</hi></test>"
+	data := test{}
+	for i := 0; i < b.N; i++ {
+		ParseXml([]byte(xml), &data)
 	}
 }
