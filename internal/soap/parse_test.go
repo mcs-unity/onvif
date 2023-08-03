@@ -3,6 +3,7 @@ package soap
 import (
 	"bytes"
 	"encoding/xml"
+	"fmt"
 	"testing"
 )
 
@@ -29,7 +30,7 @@ func TestWriteXML(t *testing.T) {
 }
 
 func TestParseXML(t *testing.T) {
-	xml := "<test><hi>Hello</hi></test>"
+	xml := "<plant><hi>Hello</hi></plant>"
 	data := test{}
 	if err := ParseXml([]byte(xml), &data); err != nil {
 		t.Error(err)
@@ -41,15 +42,20 @@ func TestParseXML(t *testing.T) {
 }
 
 func TestSoapTags(t *testing.T) {
-	soap := SoapBody()
+	soap := SoapBody("sampleAction")
 	b, err := writeXml(soap)
 	if err != nil {
 		t.Error(err)
 	}
+	fmt.Println(string(b))
 
 	if !bytes.Contains(b, []byte("SOAP-ENV:Envelope xmlns:SOAP-ENV=\"")) ||
 		!bytes.Contains(b, []byte("<SOAP-ENV:Header>")) ||
 		!bytes.Contains(b, []byte("<SOAP-ENV:Body>")) {
 		t.Error("SOAP body is invalid was unable to pass struct")
+	}
+
+	if !bytes.Contains(b, []byte("<wsa:action>sampleAction</wsa:action>")) {
+		t.Error("SOAP body is invalid unable to find soap action")
 	}
 }
