@@ -18,7 +18,7 @@ func TestWriteXML(t *testing.T) {
 		Env: "test",
 	}
 
-	b, err := WriteXml(data)
+	b, err := writeXml(data)
 	if err != nil {
 		t.Error(data)
 	}
@@ -42,7 +42,7 @@ func TestParseXML(t *testing.T) {
 
 func TestSoapTags(t *testing.T) {
 	soap := SoapBody()
-	b, err := WriteXml(soap)
+	b, err := writeXml(soap)
 	if err != nil {
 		t.Error(err)
 	}
