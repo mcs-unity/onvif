@@ -13,3 +13,11 @@ func WriteXml(data any) ([]byte, error) {
 func ParseXml(data []byte, pointer any) error {
 	return xml.Unmarshal(data, pointer)
 }
+
+func SoapBody() IXmlTag {
+	return &Envelop{
+		Namespace: "http://www.w3.org/2003/05/soap-envelope",
+		Header:    header{},
+		Body:      body{},
+	}
+}

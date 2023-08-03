@@ -2,16 +2,20 @@ package soap
 
 import (
 	"bytes"
+	"encoding/xml"
 	"testing"
 )
 
 type test struct {
-	HI string `xml:"hi,omitempty"`
+	XMLName xml.Name `xml:"plant"`
+	HI      string   `xml:"hi,omitempty"`
+	Env     string   `xml:"env,attr"`
 }
 
 func TestWriteXML(t *testing.T) {
 	data := test{
-		HI: "Hello",
+		HI:  "Hello",
+		Env: "test",
 	}
 
 	b, err := WriteXml(data)
@@ -21,16 +25,6 @@ func TestWriteXML(t *testing.T) {
 
 	if !bytes.Contains(b, []byte("</hi>")) {
 		t.Error("xml was unable to pass struct")
-	}
-}
-
-func BenchmarkWriteXML(b *testing.B) {
-	data := test{
-		HI: "Hello",
-	}
-
-	for i := 0; i < b.N; i++ {
-		WriteXml(data)
 	}
 }
 
@@ -46,10 +40,16 @@ func TestParseXML(t *testing.T) {
 	}
 }
 
-func BenchmarkParseXML(b *testing.B) {
-	xml := "<test><hi>Hello</hi></test>"
-	data := test{}
-	for i := 0; i < b.N; i++ {
-		ParseXml([]byte(xml), &data)
+func TestSoapTags(t *testing.T) {
+	soap := SoapBody()
+	b, err := WriteXml(soap)
+	if err != nil {
+		t.Error(err)
+	}
+
+	if !bytes.Contains(b, []byte("SOAP-ENV:Envelope xmlns:SOAP-ENV=\"")) ||
+		!bytes.Contains(b, []byte("<SOAP-ENV:Header>")) ||
+		!bytes.Contains(b, []byte("<SOAP-ENV:Body>")) {
+		t.Error("SOAP body is invalid was unable to pass struct")
 	}
 }
