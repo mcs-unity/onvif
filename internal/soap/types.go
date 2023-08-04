@@ -2,7 +2,10 @@ package soap
 
 import "encoding/xml"
 
-type IXmlTag interface {
+type IEnvelop interface {
+	AppendToHeader(...any)
+	AppendToBody(...any)
+	ToString() ([]byte, error)
 }
 
 type action struct {

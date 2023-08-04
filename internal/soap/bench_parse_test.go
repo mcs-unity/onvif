@@ -21,3 +21,20 @@ func BenchmarkParseXML(b *testing.B) {
 		ParseXml([]byte(xml), &data)
 	}
 }
+
+func BenchmarkAppendHeader(b *testing.B) {
+	te := test{}
+	te2 := test{}
+	s := New("testAction")
+	for i := 0; i < b.N; i++ {
+		s.AppendToHeader(te, te2)
+	}
+}
+
+func BenchmarkAppendBody(b *testing.B) {
+	te := test{}
+	s := New("testAction")
+	for i := 0; i < b.N; i++ {
+		s.AppendToBody(te)
+	}
+}

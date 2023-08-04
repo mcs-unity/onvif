@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/xml"
 	"fmt"
+	"strings"
 	"testing"
 )
 
@@ -42,8 +43,8 @@ func TestParseXML(t *testing.T) {
 }
 
 func TestSoapTags(t *testing.T) {
-	soap := SoapBody("sampleAction")
-	b, err := writeXml(soap)
+	soap := New("sampleAction")
+	b, err := soap.ToString()
 	if err != nil {
 		t.Error(err)
 	}
@@ -57,5 +58,35 @@ func TestSoapTags(t *testing.T) {
 
 	if !bytes.Contains(b, []byte("<wsa:action>sampleAction</wsa:action>")) {
 		t.Error("SOAP body is invalid unable to find soap action")
+	}
+}
+
+func TestAppendHeader(t *testing.T) {
+	te := test{}
+	te2 := test{}
+	s := New("testAction")
+	s.AppendToHeader(te, te2)
+	b, err := s.ToString()
+	fmt.Println(string(b))
+	if err != nil {
+		t.Error(err)
+	}
+
+	if !strings.Contains(string(b), "") {
+		t.Error("failed to append header value")
+	}
+}
+
+func TestAppendBody(t *testing.T) {
+	te := test{}
+	s := New("testAction")
+	s.AppendToBody(te)
+	b, err := s.ToString()
+	if err != nil {
+		t.Error(err)
+	}
+
+	if !strings.Contains(string(b), "") {
+		t.Error("failed to append bhody value")
 	}
 }
