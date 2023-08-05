@@ -4,6 +4,7 @@ import "encoding/xml"
 
 type IDigest interface {
 	ToXml() ([]byte, error)
+	nounce() error
 }
 
 type Security struct {

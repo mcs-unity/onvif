@@ -1,8 +1,6 @@
 package digest
 
 import (
-	"time"
-
 	"github.com/mcs-unity/onvif/internal/soap"
 )
 
@@ -13,13 +11,12 @@ func (d Digest) ToXml() ([]byte, error) {
 	return soap.WriteXml(s)
 }
 
-func Generate(u, p string) (IDigest, error) {
-	d := Digest{
-		Username:  u,
-		Password:  p,
-		Nounce:    "",
-		Timestamp: time.Now().Format(time.RFC3339),
+func (d *Digest) nounce() error {
+	s, err := RandomString(12)
+	if err != nil {
+		return err
 	}
+	d.Nounce = s
+	return err
 
-	return d, nil
 }
