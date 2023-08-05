@@ -14,7 +14,7 @@ func TestDigest(t *testing.T) {
 }
 
 func TestConvertToXML(t *testing.T) {
-	d, err := Generate("admin", "adminPw")
+	d, err := Generate("admin123", "admin123")
 	if err != nil {
 		t.Error(err)
 	}
