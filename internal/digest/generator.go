@@ -19,9 +19,14 @@ func Generate(u, p string) (IDigest, error) {
 	d := Digest{
 		Username:  u,
 		Password:  p,
-		Timestamp: time.Now().Format(time.RFC3339),
+		Timestamp: time.Now().UTC().Format(time.RFC3339),
 	}
 
-	d.nounce()
+	err := d.nounce()
+	if err != nil {
+		return nil, err
+	}
+
+	d.hash()
 	return &d, nil
 }

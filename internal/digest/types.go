@@ -5,15 +5,16 @@ import "encoding/xml"
 type IDigest interface {
 	ToXml() ([]byte, error)
 	nounce() error
+	hash()
 }
 
 type Security struct {
-	Xmlns  string `xml:"attr"`
+	Xmlns  string `xml:"xmlns,attr"`
 	Digest Digest
 }
 
 type Digest struct {
-	XmlName   xml.Name `xml:"UsernameToken"`
+	XMLName   xml.Name `xml:"UsernameToken"`
 	Username  string   `xml:"Username"`
 	Password  string   `xml:"Password"`
 	Nounce    string   `xml:"Nonce"`
