@@ -20,7 +20,7 @@ func TestWriteXML(t *testing.T) {
 		Env: "test",
 	}
 
-	b, err := writeXml(data)
+	b, err := WriteXml(data)
 	if err != nil {
 		t.Error(data)
 	}
