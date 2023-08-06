@@ -1,0 +1,27 @@
+FROM golang:alpine AS go
+
+FROM go AS deps
+
+RUN apk add --no-cache make
+
+WORKDIR /app
+COPY go.mod makefile ./
+RUN make install
+
+FROM go AS build
+
+WORKDIR /app
+COPY --from=deps /usr/bin  /usr/bin
+COPY --from=deps /app/go.mod /app/makefile ./
+COPY . .
+RUN make build
+
+RUN  --mount=type=secret,id=env cat /run/secrets/env > /app/.env \
+    && chmod 444 /app/.env && chown nobody /app/.env
+
+FROM scratch AS release
+
+COPY --from=build /app/bin/main /app/bin/main
+COPY --from=build /app/.env /app/bin/.env
+
+ENTRYPOINT ["/app/bin/main"]
