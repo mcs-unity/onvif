@@ -1,16 +1,15 @@
 package digest
 
 import (
-	"fmt"
+	"strings"
 	"testing"
 )
 
 func TestDigest(t *testing.T) {
-	d, err := Generate("admin", "adminPw")
+	_, err := Generate("admin", "adminPw")
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(d)
 }
 
 func TestConvertToXML(t *testing.T) {
@@ -24,5 +23,12 @@ func TestConvertToXML(t *testing.T) {
 		t.Error(err)
 	}
 
-	fmt.Println(string(xml))
+	if !strings.Contains(string(xml), "<Security xmlns=") ||
+		!strings.Contains(string(xml), "<UsernameToken>") ||
+		!strings.Contains(string(xml), "<Username>") ||
+		!strings.Contains(string(xml), "<Password Type=") ||
+		!strings.Contains(string(xml), "<Nonce EncodingType=") ||
+		!strings.Contains(string(xml), "<Created xmlns=") {
+		t.Error("Invalid digest payload")
+	}
 }
