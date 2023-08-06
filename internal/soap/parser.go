@@ -2,7 +2,7 @@ package soap
 
 import "encoding/xml"
 
-func writeXml(data any) ([]byte, error) {
+func WriteXml(data any) ([]byte, error) {
 	b, err := xml.Marshal(data)
 	if err != nil {
 		return nil, err

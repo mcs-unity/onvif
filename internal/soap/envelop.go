@@ -9,5 +9,5 @@ func (e *Envelop) AppendToBody(b ...any) {
 }
 
 func (e Envelop) ToString() ([]byte, error) {
-	return writeXml(e)
+	return WriteXml(e)
 }
