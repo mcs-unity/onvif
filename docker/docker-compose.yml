@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  onvif:
+    image: ghcr.io/mcs-unity/onvif
+    restart: always
+    ports:
+      - '8080:8080'
+

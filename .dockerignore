@@ -26,3 +26,12 @@ go.work
 
 # Sensitive inforamtion
 .[Ee]nv*
+
+# Not needed
+.github
+.vscode
+doc
+.editorconfig
+.gitignore
+*.md
+LICENSE
