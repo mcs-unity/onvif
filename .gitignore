@@ -19,6 +19,7 @@ vendor/
 
 # Go workspace file
 go.work
+/bin
 
 # Dont keep
 .DS.store
