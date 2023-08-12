@@ -22,7 +22,7 @@ go.work
 
 # Dont keep
 .DS.store
-/[Ll]og
+*[Ll]og
 
 # Sensitive inforamtion
 .[Ee]nv*
