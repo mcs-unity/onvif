@@ -94,6 +94,7 @@ allowing individuals with close to no knowledge the ability to deploy the servic
 
 - Prerequisites
   - [make](https://www.gnu.org/software/make/) - makefile
+  - [Docker](https://www.docker.com/) - Docker
 
 ##### Configure variables
 
