@@ -6,7 +6,7 @@
 
 ## Introduction
 
-A project that was aimed at myself where i practiced golang programing. The goal was to add an alternative option to
+A project that was aimed at myself where i practiced golang programming. The goal was to add an alternative option to
 C++ it needed to be simple and easy to use. Any one who wishes to read contribute or review the code and provide
 suggestion is welcome to do so.
 

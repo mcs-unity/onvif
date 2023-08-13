@@ -4,7 +4,7 @@ import (
 	"crypto/sha1"
 	"encoding/base64"
 
-	"github.com/mcs-unity/onvif/internal/soap"
+	"github.com/mcs-unity/onvif/pkg/soap"
 )
 
 func (d Digest) ToXml() ([]byte, error) {
