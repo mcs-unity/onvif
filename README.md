@@ -2,7 +2,7 @@
 <br/><br/>
 [![Unit test](https://github.com/mcs-unity/onvif/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/mcs-unity/onvif/actions/workflows/go.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mcs-unity/onvif)](https://goreportcard.com/report/github.com/mcs-unity/onvif)
-[![APM](https://img.shields.io/apm/l/vim-mode)](https://github.com/mcs-unity/go_ocpp/blob/main/LICENSE)
+![GitHub](https://img.shields.io/github/license/mcs-unity/onvif)
 
 ## Introduction
 
