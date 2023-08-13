@@ -1,5 +1,7 @@
 ![mcs logo](https://github.com/mcs-unity/go_ocpp/blob/main/resources/logo.png)
 <br/><br/>
+[![Unit test](https://github.com/mcs-unity/onvif/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/mcs-unity/onvif/actions/workflows/go.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mcs-unity/onvif)](https://goreportcard.com/report/github.com/mcs-unity/onvif)
 [![APM](https://img.shields.io/apm/l/vim-mode)](https://github.com/mcs-unity/go_ocpp/blob/main/LICENSE)
 
 ## Introduction
@@ -134,4 +136,3 @@ This project is licensed under the GNU GENERAL PUBLIC V3 - see the [LICENSE](LIC
 
 [![Go](https://github.com/mcs-unity/onvif/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/mcs-unity/onvif/actions/workflows/go.yml)
 ![GitHub](https://img.shields.io/github/license/mcs-unity/onvif)
-
