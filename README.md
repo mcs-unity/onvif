@@ -106,6 +106,12 @@ Variables
 
 ```
 
+##### WS Discovery
+
+If you are using an apple device make sure that stealth mode is disabled.
+If enabled a multicast broadcast will be sent to the network but all incoming
+response will be blocked. 
+
 ##### Build and run
 
 to deploy the service using docker is easy cake all you need to do is make sure
@@ -124,6 +130,7 @@ as distribution.
 - [Docker](https://www.docker.com/) - Docker container
 - [Editor config](https://editorconfig.org/) - Editor Config
 - [Mac os Ventura](https://www.apple.com/th/macos/ventura/) - Mac os ventura
+- [WireShark](http://wireshark.org) - WireShark
 
 ### Authors
 
