@@ -1,10 +1,12 @@
 ![mcs logo](https://github.com/mcs-unity/go_ocpp/blob/main/resources/logo.png)
 <br/><br/>
-[![APM](https://img.shields.io/apm/l/vim-mode)](https://github.com/mcs-unity/go_ocpp/blob/main/LICENSE)
+[![Unit test](https://github.com/mcs-unity/onvif/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/mcs-unity/onvif/actions/workflows/go.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mcs-unity/onvif)](https://goreportcard.com/report/github.com/mcs-unity/onvif)
+![GitHub](https://img.shields.io/github/license/mcs-unity/onvif)
 
 ## Introduction
 
-A project that was aimed at myself where i practiced golang programing. The goal was to add an alternative option to
+A project that was aimed at myself where i practiced golang programming. The goal was to add an alternative option to
 C++ it needed to be simple and easy to use. Any one who wishes to read contribute or review the code and provide
 suggestion is welcome to do so.
 
@@ -92,6 +94,7 @@ allowing individuals with close to no knowledge the ability to deploy the servic
 
 - Prerequisites
   - [make](https://www.gnu.org/software/make/) - makefile
+  - [Docker](https://www.docker.com/) - Docker
 
 ##### Configure variables
 
@@ -102,6 +105,12 @@ before you run the service make sure to go to the dockerfile and modify the
 Variables
 
 ```
+
+##### WS Discovery
+
+If you are using an apple device make sure that stealth mode is disabled.
+If enabled a multicast broadcast will be sent to the network but all incoming
+response will be blocked. 
 
 ##### Build and run
 
@@ -121,6 +130,7 @@ as distribution.
 - [Docker](https://www.docker.com/) - Docker container
 - [Editor config](https://editorconfig.org/) - Editor Config
 - [Mac os Ventura](https://www.apple.com/th/macos/ventura/) - Mac os ventura
+- [WireShark](http://wireshark.org) - WireShark
 
 ### Authors
 
@@ -134,4 +144,3 @@ This project is licensed under the GNU GENERAL PUBLIC V3 - see the [LICENSE](LIC
 
 [![Go](https://github.com/mcs-unity/onvif/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/mcs-unity/onvif/actions/workflows/go.yml)
 ![GitHub](https://img.shields.io/github/license/mcs-unity/onvif)
-

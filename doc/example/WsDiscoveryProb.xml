@@ -1,0 +1,74 @@
+
+<!--Sample request broadcasted using ws descovery-->
+<?xml version="1.0" encoding="UTF-8"?>
+<soap-env:Envelope xmlns:soap-env="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:d="http://schemas.xmlsoap.org/ws/2005/04/discovery"
+    xmlns:dn="http://www.onvif.org/ver10/network/wsdl"
+    xmlns:soap-enc="http://www.w3.org/2003/05/soap-encoding">
+    <soap-env:Header>
+        <a:Action mustUnderstand="1">http://schemas.xmlsoap.org/ws/2005/04/discovery/Probe</a:Action>
+        <a:MessageID>uuid:a277f13a-ecae-4492-9d6a-218982122d1c</a:MessageID>
+        <a:To mustUnderstand="1">urn:schemas-xmlsoap-org:ws:2005:04:discovery</a:To>
+    </soap-env:Header>
+    <soap-env:Body>
+        <d:Probe>
+            <d:Types>dn:NetworkVideoTransmitter</d:Types>
+        </d:Probe>
+    </soap-env:Body>
+</soap-env:Envelope>
+
+<!--Sample repsonse from ws descovery-->
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsdd="http://schemas.xmlsoap.org/ws/2005/04/discovery"
+    xmlns:chan="http://schemas.microsoft.com/ws/2005/02/duplex"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    xmlns:wsa5="http://www.w3.org/2005/08/addressing"
+    xmlns:xmime="http://tempuri.org/xmime.xsd"
+    xmlns:xop="http://www.w3.org/2004/08/xop/include"
+    xmlns:wsrfbf="http://docs.oasis-open.org/wsrf/bf-2"
+    xmlns:wstop="http://docs.oasis-open.org/wsn/t-1"
+    xmlns:wsrfr="http://docs.oasis-open.org/wsrf/r-2"
+    xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2"
+    xmlns:tt="http://www.onvif.org/ver10/schema"
+    xmlns:ter="http://www.onvif.org/ver10/error"
+    xmlns:tns1="http://www.onvif.org/ver10/topics"
+    xmlns:tds="http://www.onvif.org/ver10/device/wsdl"
+    xmlns:trt="http://www.onvif.org/ver10/media/wsdl"
+    xmlns:tev="http://www.onvif.org/ver10/events/wsdl"
+    xmlns:tdn="http://www.onvif.org/ver10/network/wsdl"
+    xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl"
+    xmlns:trp="http://www.onvif.org/ver10/replay/wsdl"
+    xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl"
+    xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl"
+    xmlns:hikwsd="http://www.onvifext.com/onvif/ext/ver10/wsdl"
+    xmlns:hikxsd="http://www.onvifext.com/onvif/ext/ver10/schema">
+    <SOAP-ENV:Header>
+        <wsa:MessageID>uuid:a277f13a-ecae-4492-9d6a-218982122d1c</wsa:MessageID>
+        <wsa:RelatesTo>uuid:a277f13a-ecae-4492-9d6a-218982122d1c</wsa:RelatesTo>
+        <wsa:To SOAP-ENV:mustUnderstand="true">urn:schemas-xmlsoap-org:ws:2005:04:discovery</wsa:To>
+        <wsa:Action SOAP-ENV:mustUnderstand="true">http://schemas.xmlsoap.org/ws/2005/04/discovery/ProbeMatches</wsa:Action>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <wsdd:ProbeMatches>
+            <wsdd:ProbeMatch>
+                <wsa:EndpointReference>
+                    <wsa:Address>uuid:3fa1fe68-b915-4053-a3e1-40ed00193820</wsa:Address>
+                    <wsa:ReferenceProperties>
+                    </wsa:ReferenceProperties>
+                    <wsa:PortType>ttl</wsa:PortType>
+                </wsa:EndpointReference>
+                <wsdd:Types>tdn:NetworkVideoTransmitter</wsdd:Types>
+                <wsdd:Scopes>onvif://www.onvif.org/name/Tapo%20C210 onvif://www.onvif.org/hardware/C210 onvif://www.onvif.org/Profile/Streaming onvif://www.onvif.org/location/Hong%20Kong onvif://www.onvif.org/type/NetworkVideoTransmitter </wsdd:Scopes>
+                <wsdd:XAddrs>http://{Device IP}:2020/onvif/device_service</wsdd:XAddrs>
+                <wsdd:MetadataVersion>1</wsdd:MetadataVersion>
+            </wsdd:ProbeMatch>
+        </wsdd:ProbeMatches>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

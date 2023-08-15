@@ -3,7 +3,6 @@ package soap
 import (
 	"bytes"
 	"encoding/xml"
-	"fmt"
 	"strings"
 	"testing"
 )
@@ -48,7 +47,6 @@ func TestSoapTags(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(string(b))
 
 	if !bytes.Contains(b, []byte("SOAP-ENV:Envelope xmlns:SOAP-ENV=\"")) ||
 		!bytes.Contains(b, []byte("<SOAP-ENV:Header>")) ||
@@ -67,7 +65,6 @@ func TestAppendHeader(t *testing.T) {
 	s := New("testAction")
 	s.AppendToHeader(te, te2)
 	b, err := s.ToString()
-	fmt.Println(string(b))
 	if err != nil {
 		t.Error(err)
 	}
