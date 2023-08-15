@@ -13,40 +13,43 @@ import (
 // Target service will send a message with a delay that is random between 0,500 ms
 // Max timeout for a response is set to 5 seconds once a multicast is broadcasted in the network
 
-func SendMulticastProbe(data []byte) (int, error) {
+func SendMulticastProbe(data []byte) ([]Match, error) {
 	con, err := net.ListenPacket("udp4", "0.0.0.0:1024")
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
 	defer con.Close()
 
-	if err := con.SetWriteDeadline(time.Now().Add(max_delay)); err != nil {
-		return 0, err
+	dst, err := net.ResolveUDPAddr("udp4", fmt.Sprintf("%s:%d", ipv4, port))
+	if err != nil {
+		return nil, err
 	}
 
-	dst, err := net.ResolveUDPAddr("udp4", fmt.Sprintf("%s:%d", ip, port))
-	if err != nil {
-		return 0, err
+	if err := con.SetWriteDeadline(time.Now().Add(max_delay)); err != nil {
+		return nil, err
 	}
 
 	_, err = con.WriteTo(data, dst)
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
 
 	if err := con.SetReadDeadline(time.Now().Add(max_wait)); err != nil {
-		return 0, err
+		return nil, err
 	}
 
-	b := make([]byte, 4096)
+	b := make([]byte, max_buffer)
+	m := make([]Match, 0, max_matches)
 
 	for {
 		n, cm, err := con.ReadFrom(b)
 		if err != nil {
-			return 0, err
-		} else {
-			fmt.Println(string(b[:n]), cm)
-			return n, nil
+			return m, err
 		}
+		d := Match{
+			IP:   cm.String(),
+			Data: b[:n],
+		}
+		m = append(m, d)
 	}
 }

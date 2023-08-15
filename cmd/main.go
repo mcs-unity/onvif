@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
-
-	"github.com/mcs-unity/onvif/pkg/wsdiscovery"
 )
 
 var FilePath = ""
@@ -16,15 +14,6 @@ func main() {
 		panic(err)
 	}
 	FilePath = wd
-
-	r, err := os.ReadFile(fmt.Sprintf("%s/%s", FilePath, "pkg/wsdiscovery/prob.xml"))
-	if err != nil {
-		panic(err)
-	}
-
-	if _, err := wsdiscovery.SendMulticastProbe(r); err != nil {
-		panic(err)
-	}
 
 	c := make(chan os.Signal, 1)
 
