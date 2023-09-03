@@ -4,20 +4,24 @@ import (
 	"net"
 	"net/http"
 	"sync"
+	"time"
 )
+
+const timeout = 5 * time.Second
 
 type IServer interface {
 	Listen(h http.Handler) error
-	Stop() error
+	Terminate() error
 }
 
-type tls struct {
+type TLSConfig struct {
 	certPath string
 	keyPath  string
 }
 
 type Server struct {
-	con net.Listener
-	mu  sync.Locker
-	tls *tls
+	con  net.Listener
+	http http.Server
+	mu   sync.Locker
+	tls  *TLSConfig
 }

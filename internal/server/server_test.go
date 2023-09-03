@@ -24,8 +24,8 @@ func TestListen(t *testing.T) {
 		wg.Done()
 	}()
 
-	if err := s.Stop(); err != nil {
-		t.Error()
+	if err := s.Terminate(); err != nil {
+		t.Error(err)
 	}
 
 	wg.Wait()

@@ -11,7 +11,7 @@ install:
 	go mod download && go mod verify
 
 run:
-	go run $(rflags) cmd/main.go
+	go run $(rflags) main.go
 
 test:
 	go test ./...

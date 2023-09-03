@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"syscall"
 
+	"github.com/mcs-unity/onvif/api"
 	"github.com/mcs-unity/onvif/internal/env"
 	"github.com/mcs-unity/onvif/internal/listener"
 	"github.com/mcs-unity/onvif/internal/server"
@@ -32,7 +33,7 @@ func main() {
 	cert := server.Cert("cert/server.crt", "cert/server.key")
 	s := server.New(l, &cert)
 	go func() {
-		err := s.Listen(nil)
+		err := s.Listen(api.Load())
 		fmt.Println(err)
 	}()
 
