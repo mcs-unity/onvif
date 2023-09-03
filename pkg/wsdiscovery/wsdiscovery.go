@@ -20,7 +20,7 @@ func SendMulticastProbe(data []byte) ([]Match, error) {
 	}
 	defer con.Close()
 
-	dst, err := net.ResolveUDPAddr("udp4", fmt.Sprintf("%s:%d", ipv4, port))
+	dst, err := net.ResolveUDPAddr("udp4", fmt.Sprintf("%s:%d", multicastIP, port))
 	if err != nil {
 		return nil, err
 	}

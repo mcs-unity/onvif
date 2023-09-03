@@ -141,6 +141,3 @@ See also the list of [contributors](https://github.com/mcs-unity/onvif/graphs/co
 ### License
 
 This project is licensed under the GNU GENERAL PUBLIC V3 - see the [LICENSE](LICENSE) file for details
-
-[![Go](https://github.com/mcs-unity/onvif/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/mcs-unity/onvif/actions/workflows/go.yml)
-![GitHub](https://img.shields.io/github/license/mcs-unity/onvif)
