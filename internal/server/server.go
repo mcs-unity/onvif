@@ -10,9 +10,6 @@ import (
 )
 
 func (s *Server) Stop() error {
-	s.l.Lock()
-	defer s.l.Unlock()
-
 	port := listener.GetPort(s.con)
 	if port == 0 {
 		return errors.New("unable to fetch port to close the server")
@@ -22,9 +19,6 @@ func (s *Server) Stop() error {
 }
 
 func (s *Server) Listen(h http.Handler) error {
-	s.l.Lock()
-	defer s.l.Unlock()
-
 	if s.tls != nil {
 		return http.ServeTLS(s.con, h, s.tls.certPath, s.tls.keyPath)
 	}
@@ -32,11 +26,11 @@ func (s *Server) Listen(h http.Handler) error {
 	return http.Serve(s.con, h)
 }
 
-func New(c net.Listener, t tls) IServer {
+func New(c net.Listener, t *tls) IServer {
 	return &Server{
 		l:   &sync.Mutex{},
 		con: c,
-		tls: &t,
+		tls: t,
 	}
 }
 
