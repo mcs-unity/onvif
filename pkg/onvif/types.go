@@ -1,4 +1,4 @@
 package onvif
 
-const probeType = "dn:NetworkVideoTransmitter"
+const onvifProbe = "dn:NetworkVideoTransmitter"
 const namespace = "http://www.onvif.org/ver10/network/wsdl"

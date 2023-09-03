@@ -18,6 +18,7 @@ test:
 
 build:test
 	go build $(bflags) -o $(output) cmd/main.go
+	cp -R cert bin
 
 build_docker:
 	docker build --secret id=env,src=.env -f docker/dockerfile -t $(repo) .

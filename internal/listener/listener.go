@@ -12,8 +12,8 @@ import (
 var list hub
 
 func Get(p port) net.Listener {
-	list.l.Lock()
-	defer list.l.Unlock()
+	list.mu.Lock()
+	defer list.mu.Unlock()
 	if v, ok := list.list[p]; ok {
 		return v
 	}
@@ -45,8 +45,8 @@ func GetPort(l net.Listener) uint16 {
 }
 
 func Listener(ip string, p port, n network) (net.Listener, error) {
-	list.l.Lock()
-	defer list.l.Unlock()
+	list.mu.Lock()
+	defer list.mu.Unlock()
 
 	addr := net.ParseIP(ip)
 	if addr == nil {
@@ -57,6 +57,7 @@ func Listener(ip string, p port, n network) (net.Listener, error) {
 		IP:   addr,
 		Port: int(p),
 	})
+	fmt.Printf("%s is now listening on ip:%s, port: %d \n", n, ip, p)
 
 	if err != nil {
 		return nil, err
@@ -72,8 +73,10 @@ func Listener(ip string, p port, n network) (net.Listener, error) {
 
 func Close(p port) error {
 	if l := Get(p); l != nil {
+		fmt.Println("attempting to close:", l.Addr().String())
 		if err := l.Close(); err == nil {
 			delete(list.list, p)
+			fmt.Printf("%s was successfully closed\n", l.Addr().String())
 			return nil
 		} else {
 			return err
@@ -85,7 +88,7 @@ func Close(p port) error {
 
 func init() {
 	list = hub{
-		l:    &sync.Mutex{},
+		mu:   &sync.Mutex{},
 		list: make(map[uint16]net.Listener),
 	}
 }

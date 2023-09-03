@@ -18,6 +18,6 @@ type tls struct {
 
 type Server struct {
 	con net.Listener
-	l   sync.Locker
+	mu  sync.Locker
 	tls *tls
 }

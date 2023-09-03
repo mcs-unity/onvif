@@ -13,6 +13,6 @@ const (
 )
 
 type hub struct {
-	l    sync.Locker
+	mu   sync.Locker
 	list map[port]net.Listener
 }

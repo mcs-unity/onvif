@@ -2,6 +2,7 @@ package server
 
 import (
 	"errors"
+	"fmt"
 	"net"
 	"net/http"
 	"sync"
@@ -19,6 +20,7 @@ func (s *Server) Stop() error {
 }
 
 func (s *Server) Listen(h http.Handler) error {
+	fmt.Println("http server is now linking with net listener")
 	if s.tls != nil {
 		return http.ServeTLS(s.con, h, s.tls.certPath, s.tls.keyPath)
 	}
@@ -28,7 +30,7 @@ func (s *Server) Listen(h http.Handler) error {
 
 func New(c net.Listener, t *tls) IServer {
 	return &Server{
-		l:   &sync.Mutex{},
+		mu:  &sync.Mutex{},
 		con: c,
 		tls: t,
 	}
