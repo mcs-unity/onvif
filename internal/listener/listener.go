@@ -44,7 +44,7 @@ func GetPort(l net.Listener) uint16 {
 
 }
 
-func Listener(ip string, p port, n network) (net.Listener, error) {
+func Listen(ip string, p port, n network) (net.Listener, error) {
 	list.mu.Lock()
 	defer list.mu.Unlock()
 

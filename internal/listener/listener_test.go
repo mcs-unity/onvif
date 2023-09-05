@@ -8,14 +8,14 @@ var port1 uint16 = 8080
 var port2 uint16 = 8090
 
 func TestInvalidListen(t *testing.T) {
-	_, err := Listener(invalidIP, port1, TCP)
+	_, err := Listen(invalidIP, port1, TCP)
 	if err == nil {
 		t.Error("did not catch invalid ip address")
 	}
 }
 
 func TestCloseListener(t *testing.T) {
-	_, err := Listener(validIP, port1, TCP)
+	_, err := Listen(validIP, port1, TCP)
 	if err != nil {
 		t.Error(err)
 	}
@@ -30,26 +30,26 @@ func TestCloseListener(t *testing.T) {
 }
 
 func TestTwoListenerOnSamePort(t *testing.T) {
-	_, err := Listener(validIP, port1, TCP)
+	_, err := Listen(validIP, port1, TCP)
 	defer Close(port1)
 	if err != nil {
 		t.Error(err)
 	}
 
-	_, err = Listener(validIP, port1, TCP)
+	_, err = Listen(validIP, port1, TCP)
 	if err == nil {
 		t.Error("a second listener was opened with the same port 8080")
 	}
 }
 
 func TestOpenTwoListener(t *testing.T) {
-	_, err := Listener(validIP, port1, TCP)
+	_, err := Listen(validIP, port1, TCP)
 	defer Close(port1)
 	if err != nil {
 		t.Error(err)
 	}
 
-	_, err = Listener(validIP, port2, TCP)
+	_, err = Listen(validIP, port2, TCP)
 	defer Close(port2)
 	if err != nil {
 		t.Error(err)
@@ -62,7 +62,7 @@ func TestOpenTwoListener(t *testing.T) {
 }
 
 func TestGetPort(t *testing.T) {
-	l, err := Listener(validIP, port1, TCP)
+	l, err := Listen(validIP, port1, TCP)
 	if err != nil {
 		t.Error(err)
 	}

@@ -9,7 +9,7 @@ import (
 )
 
 func TestListen(t *testing.T) {
-	l, err := listener.Listener("127.0.0.1", 8080, listener.TCP)
+	l, err := listener.Listen("127.0.0.1", 8080, listener.TCP)
 	if err != nil {
 		t.Error(err)
 	}

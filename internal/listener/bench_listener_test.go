@@ -6,7 +6,7 @@ import (
 
 func BenchmarkOpenCloseListener(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		_, err := Listener(validIP, port1, TCP)
+		_, err := Listen(validIP, port1, TCP)
 		if err != nil {
 			b.Error(err)
 		}
@@ -18,7 +18,7 @@ func BenchmarkOpenCloseListener(b *testing.B) {
 }
 
 func BenchmarkGetListener(b *testing.B) {
-	_, err := Listener(validIP, port1, TCP)
+	_, err := Listen(validIP, port1, TCP)
 	if err != nil {
 		b.Error(err)
 	}
@@ -30,13 +30,13 @@ func BenchmarkGetListener(b *testing.B) {
 }
 
 func BenchmarkGetListeners(b *testing.B) {
-	_, err := Listener(validIP, port1, TCP)
+	_, err := Listen(validIP, port1, TCP)
 	defer Close(port1)
 	if err != nil {
 		b.Error(err)
 	}
 
-	_, err = Listener(validIP, port2, TCP)
+	_, err = Listen(validIP, port2, TCP)
 	defer Close(port2)
 	if err != nil {
 		b.Error(err)
@@ -48,7 +48,7 @@ func BenchmarkGetListeners(b *testing.B) {
 }
 
 func BenchmarkGetPort(b *testing.B) {
-	l, err := Listener(validIP, port1, TCP)
+	l, err := Listen(validIP, port1, TCP)
 	if err != nil {
 		b.Error(err)
 	}

@@ -24,7 +24,7 @@ func main() {
 		panic(err)
 	}
 	port := uint16(p)
-	l, err := listener.Listener(os.Getenv("IP"), port, listener.TCP)
+	l, err := listener.Listen(os.Getenv("IP"), port, listener.TCP)
 	if err != nil {
 		panic(err)
 	}
