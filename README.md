@@ -1,6 +1,7 @@
 ![mcs logo](https://github.com/mcs-unity/go_ocpp/blob/main/resources/logo.png)
 <br/><br/>
-[![Unit test](https://github.com/mcs-unity/onvif/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/mcs-unity/onvif/actions/workflows/go.yml)
+[![Build](https://github.com/mcs-unity/onvif/actions/workflows/build.yml/badge.svg)](https://github.com/mcs-unity/onvif/actions/workflows/build.yml)
+[![Unit test](https://github.com/mcs-unity/onvif/actions/workflows/unit-test.yml/badge.svg)](https://github.com/mcs-unity/onvif/actions/workflows/unit-test.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mcs-unity/onvif)](https://goreportcard.com/report/github.com/mcs-unity/onvif)
 ![GitHub](https://img.shields.io/github/license/mcs-unity/onvif)
 
