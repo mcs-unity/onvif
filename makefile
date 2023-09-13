@@ -17,7 +17,7 @@ test:
 	go test ./...
 
 build:test
-	go build $(bflags) -o $(output) cmd/main.go
+	go build $(bflags) -o $(output) main.go
 	cp -R cert bin
 
 build_docker:
