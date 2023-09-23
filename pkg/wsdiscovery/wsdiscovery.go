@@ -44,8 +44,12 @@ func SendMulticastProbe(data []byte) ([]Match, error) {
 	for {
 		n, cm, err := con.ReadFrom(b)
 		if err != nil {
+			if err.(net.Error).Timeout() {
+				return m, nil
+			}
 			return m, err
 		}
+		fmt.Printf("%s\n", b[:n])
 		d := Match{
 			IP:   cm.String(),
 			Data: b[:n],

@@ -13,6 +13,6 @@ const port = 3702
 const max_buffer = 8192
 
 type Match struct {
-	IP   string
-	Data []byte
+	IP   string `json:"ip,omitempty"`
+	Data []byte `json:"data,omitempty"`
 }

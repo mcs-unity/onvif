@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-const timeout = 5 * time.Second
+const timeout = 10 * time.Second
 
 type IServer interface {
 	Listen(h http.Handler) error
