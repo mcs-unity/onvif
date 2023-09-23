@@ -34,12 +34,12 @@ func SendMulticastProbe(data []byte) ([]Match, error) {
 		return nil, err
 	}
 
+	b := make([]byte, max_buffer)
+	m := make([]Match, 0, max_matches)
+
 	if err := con.SetReadDeadline(time.Now().Add(max_wait)); err != nil {
 		return nil, err
 	}
-
-	b := make([]byte, max_buffer)
-	m := make([]Match, 0, max_matches)
 
 	for {
 		n, cm, err := con.ReadFrom(b)
